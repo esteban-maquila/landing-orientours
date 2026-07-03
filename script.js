@@ -335,6 +335,11 @@ function cerrarModal(){
 fondo.addEventListener('click',e=>{ if(e.target===fondo) cerrarModal(); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') cerrarModal(); });
 
+/* Botones del footer que abren modales directamente */
+document.querySelectorAll('.footer-dest').forEach(btn=>{
+  btn.addEventListener('click',()=>{ abrirModal(btn.dataset.modal); });
+});
+
 /* ---------- FORMULARIO DE COTIZACIÓN ---------- */
 document.getElementById('formCotizar').addEventListener('submit',e=>{
   e.preventDefault();

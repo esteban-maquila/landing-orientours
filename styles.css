@@ -384,6 +384,13 @@
   .grid-footer h4{color:#fff;margin-bottom:16px;font-size:1rem}
   .grid-footer li{margin-bottom:10px;font-size:.92rem}
   .grid-footer a:hover{color:var(--amarillo)}
+  .footer-dest{
+    background:none;border:none;padding:0;margin:0;
+    color:rgba(255,255,255,.82);font-size:.92rem;
+    font-family:inherit;cursor:pointer;text-align:left;
+    transition:color .2s;
+  }
+  .footer-dest:hover{color:var(--amarillo)}
   .footer-logo{font-weight:800;font-size:1.5rem;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
   .footer-logo em{font-style:normal;color:var(--coral)}
   .footer-logo .chip-logo{
