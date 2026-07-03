@@ -1,4 +1,4 @@
-﻿:root{
+:root{
     --azul-prof:#0b2a4a;
     --azul:#10518f;
     --azul-vivo:#1769c4;
@@ -412,6 +412,18 @@
   .modal-cab{padding:34px 36px 20px;color:#fff;border-radius:26px 26px 0 0;position:relative}
   .modal-cab h3{font-size:1.65rem;margin-bottom:4px;font-weight:800}
   .modal-cab .sub-modal{opacity:.92;font-weight:600;font-size:.92rem}
+  .plus-badges{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;
+  }
+  .plus-badge{
+    display:inline-flex;align-items:center;gap:5px;
+    background:rgba(255,255,255,.22);backdrop-filter:blur(4px);
+    color:#fff;border:1px solid rgba(255,255,255,.4);
+    padding:5px 14px;border-radius:999px;
+    font-size:.80rem;font-weight:700;letter-spacing:.03em;
+    white-space:nowrap;
+  }
+  .plus-badge::before{content:"✦";font-size:.65rem;opacity:.85}
   .modal-foto{
     width:100%;
     height:auto;
@@ -498,4 +510,172 @@
     .hamb.activo span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
     .fila-form{grid-template-columns:1fr}
     .modal-cab,.modal-cuerpo{padding-left:22px;padding-right:22px}
+  }
+
+  /* ===== REDES SOCIALES SECTION ===== */
+  .redes-sociales {
+    background: #ffffff;
+    text-align: center;
+  }
+  .grid-redes {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .red-card {
+    position: relative;
+    width: 320px;
+    border-radius: 24px;
+    padding: 3px; /* border gradient illusion */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--texto);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    background: #f4f7fa;
+  }
+  .card-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  }
+  .card-tiktok {
+    background: linear-gradient(135deg, #00f2fe, #4facfe, #ff007f);
+  }
+  .card-facebook {
+    background: linear-gradient(135deg, #1877f2, #3b5998);
+  }
+  
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+  }
+  .card-instagram .card-glow {
+    background: radial-gradient(circle at center, rgba(220, 39, 67, 0.3), transparent 70%);
+  }
+  .card-tiktok .card-glow {
+    background: radial-gradient(circle at center, rgba(0, 242, 254, 0.3), transparent 70%);
+  }
+  .card-facebook .card-glow {
+    background: radial-gradient(circle at center, rgba(24, 119, 242, 0.3), transparent 70%);
+  }
+
+  .red-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(11, 42, 74, 0.15);
+  }
+  .red-card:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-interior {
+    background: #ffffff;
+    border-radius: 21px;
+    padding: 34px 28px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .red-card:hover .card-interior {
+    background: #fafbfc;
+  }
+
+  .red-icono {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+  }
+  .card-instagram .red-icono {
+    background: linear-gradient(45deg, #f9ebff, #ffebee);
+    fill: #dc2743;
+  }
+  .card-tiktok .red-icono {
+    background: #111;
+    fill: #ffffff;
+  }
+  .card-facebook .red-icono {
+    background: linear-gradient(45deg, #e7f3ff, #f0f2f5);
+    fill: #1877f2;
+  }
+  
+  .red-icono svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .card-tiktok .red-icono svg {
+    filter: drop-shadow(2px 0px 0px #ff007f) drop-shadow(-2px 0px 0px #00f2fe);
+  }
+
+  .red-card:hover .red-icono {
+    transform: rotate(10deg) scale(1.15);
+  }
+
+  .card-interior h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--azul-prof);
+    margin-bottom: 6px;
+  }
+  
+  .red-tagline {
+    font-size: 0.94rem;
+    color: var(--gris);
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+
+  .red-btn {
+    padding: 10px 24px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .card-instagram .red-btn {
+    background: linear-gradient(45deg, #f09433, #dc2743);
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(220, 39, 67, 0.25);
+  }
+  .card-tiktok .red-btn {
+    background: #010101;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  }
+  .card-facebook .red-btn {
+    background: #1877f2;
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(24, 119, 242, 0.25);
+  }
+
+  .red-card:hover .red-btn {
+    transform: translateY(-2px);
+  }
+  .card-instagram:hover .red-btn {
+    box-shadow: 0 10px 24px rgba(220, 39, 67, 0.4);
+  }
+  .card-tiktok:hover .red-btn {
+    background: #111;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  }
+  .card-facebook:hover .red-btn {
+    box-shadow: 0 10px 24px rgba(24, 119, 242, 0.4);
   }

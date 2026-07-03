@@ -1,4 +1,4 @@
-﻿/* ---------- DATOS DE LOS PLANES ---------- */
+/* ---------- DATOS DE LOS PLANES ---------- */
 const planes = {
   ballenas:{
     titulo:"Avistamiento de Ballenas 🐋",
@@ -75,6 +75,32 @@ const planes = {
     ws:"Hola Orientours, quiero información del plan Murillo y Nevado del Ruiz 🏔️",
     pdf:"pdf/Murillo 2026.pdf"
   },
+  ejecafetero:{
+    titulo:"Eje Cafetero ☕",
+    sub:"Quindío, Risaralda y Caldas · 4 días, 3 noches · Salidas todos los fines de semana",
+    grad:"linear-gradient(150deg,#5c3d2e,#865439 55%,#c68b59)",
+    foto:"Eje cafetero/Principal eje cafetero.jpeg",
+    plus:["Valle del Cócora","Termales Santa Rosa de Cabal","Parque del Café","Parque Panaca","🏊 Hospedaje con piscina"],
+    incluye:[
+      "Transporte terrestre ida y regreso en bus de turismo desde Medellín y Oriente",
+      "3 noches de hospedaje en Finca Hotel Campestre con piscina",
+      "Alimentación: 3 desayunos y 3 cenas",
+      "Entrada y pasaporte al Parque del Café",
+      "Entrada al Parque Panaca",
+      "Entrada a los Termales de Santa Rosa de Cabal",
+      "Visita a Salento y el Valle de Cocora",
+      "Visita a Filandia y el Mirador Colina Iluminada / Encanto",
+      "Tours panorámicos por Armenia y Pereira",
+      "Tarjeta de asistencia médica y coordinador de viaje"
+    ],
+    precios:[
+      ["Acomodación Múltiple","$745.000"],
+      ["Acomodación Doble","Consultar"]
+    ],
+    nota:"Salida 4:30 a.m. desde Medellín y Oriente. No incluye gastos no especificados ni miradores privados en Cocora. Para viajes con niños consultar tarifas especiales.",
+    ws:"Hola Orientours, quiero información del plan Eje Cafetero ☕",
+    pdf:"pdf/Eje cafetero.pdf"
+  },
   norcasia:{
     titulo:"Norcasia y Río La Miel 🛶",
     sub:"Caldas · 2 días, 1 noche",
@@ -117,7 +143,7 @@ const planes = {
     titulo:"Solos y Solas · Makai 🎉",
     sub:"Necoclí · Viernes a lunes · 20 a 45 años",
     grad:"linear-gradient(150deg,#b53471,#ee5253 55%,#feca57)",
-    foto:"Necocli/Principal Necocli.png",
+    foto:"Necocli/Principal Necocli.jpeg",
     incluye:[
       "Transporte desde Oriente Antioqueño y Medellín (bus de hombres y bus de mujeres: ¡se conocen al llegar!)",
       "Hospedaje según acomodación elegida",
@@ -136,7 +162,7 @@ const planes = {
     titulo:"San Carlos: Tranqui o Xtremo 🌿⚡",
     sub:"San Carlos, Antioquia · Excursión de día",
     grad:"linear-gradient(150deg,#155543,#1f8c70 55%,#56d0a0)",
-    foto:"San Carlos/Principal San Carlos.png",
+    foto:"San Carlos/Principal San Carlos.jpeg",
     incluye:[
       "Transporte ida y regreso desde Medellín y Oriente",
       "Almuerzo incluido",
@@ -280,6 +306,7 @@ function abrirModal(id){
       <button class="cerrar" onclick="cerrarModal()" aria-label="Cerrar">✕</button>
       <h3>${p.titulo}</h3>
       <div class="sub-modal">${p.sub}</div>
+      ${p.plus ? `<div class="plus-badges">${p.plus.map(b=>`<span class="plus-badge">${b}</span>`).join('')}</div>` : ''}
     </div>
     <div class="modal-cuerpo">
       ${p.foto ? `<img src="${p.foto}" alt="${p.titulo}" class="modal-foto">` : ''}
