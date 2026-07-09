@@ -318,8 +318,9 @@ function abrirModal(id){
       </table>
       <div class="nota-modal">ℹ️ ${p.nota}</div>
       <div class="modal-cta">
-        <a class="btn btn-ws" target="_blank" rel="noopener"
-           href="https://wa.me/${WS_NUM}?text=${encodeURIComponent(p.ws)}">
+        <a class="btn btn-ws ws-link" target="_blank" rel="noopener"
+           href="https://wa.me/${WS_NUM}?text=${encodeURIComponent(p.ws)}"
+           data-ws-text="${p.ws}">
            💬 Reservar por WhatsApp
         </a>
       </div>
@@ -365,7 +366,7 @@ document.getElementById('formCotizar').addEventListener('submit',e=>{
   let texto = `Hola Orientours 👋 Soy ${nombre} y quiero cotizar el plan: ${destino}.`;
   if(pers) texto += ` Somos ${pers} persona(s).`;
   if(msj)  texto += ` ${msj}`;
-  window.open(`https://wa.me/${WS_NUM}?text=${encodeURIComponent(texto)}`,'_blank');
+  abrirModalWhatsapp(texto);
 });
 
 /* ---------- ANIMACIONES AL HACER SCROLL ---------- */
@@ -388,3 +389,84 @@ function actualizarEnlacesWhatsApp() {
   });
 }
 actualizarEnlacesWhatsApp();
+
+/* ---------- MODAL SELECCIÓN WHATSAPP ---------- */
+const ASESORES = {
+  anlly: {
+    nombre: "Anlly",
+    numero: "573205536788"
+  },
+  made: {
+    nombre: "Made",
+    numero: "573122633928"
+  }
+};
+
+const wsModalFondo = document.getElementById('wsModalFondo');
+const wsModalCerrar = document.getElementById('wsModalCerrar');
+const wsAsesorAnlly = document.getElementById('wsAsesorAnlly');
+const wsAsesorMade = document.getElementById('wsAsesorMade');
+
+function abrirModalWhatsapp(texto = '') {
+  const baseWaUrl = "https://wa.me/";
+  const textQuery = texto ? `?text=${encodeURIComponent(texto)}` : '';
+  
+  wsAsesorAnlly.href = `${baseWaUrl}${ASESORES.anlly.numero}${textQuery}`;
+  wsAsesorMade.href = `${baseWaUrl}${ASESORES.made.numero}${textQuery}`;
+  
+  wsModalFondo.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarModalWhatsapp() {
+  wsModalFondo.classList.remove('abierto');
+  
+  // Solo restaurar scroll si el modal principal tampoco está abierto
+  const standardModal = document.getElementById('modalFondo');
+  if (standardModal && !standardModal.classList.contains('abierto')) {
+    document.body.style.overflow = '';
+  }
+}
+
+if (wsModalCerrar) {
+  wsModalCerrar.addEventListener('click', cerrarModalWhatsapp);
+}
+if (wsModalFondo) {
+  wsModalFondo.addEventListener('click', e => {
+    if (e.target === wsModalFondo) cerrarModalWhatsapp();
+  });
+}
+
+// Cerrar al hacer click en las asesoras
+if (wsAsesorAnlly) {
+  wsAsesorAnlly.addEventListener('click', cerrarModalWhatsapp);
+}
+if (wsAsesorMade) {
+  wsAsesorMade.addEventListener('click', cerrarModalWhatsapp);
+}
+
+// Interceptar todos los clicks a los enlaces con la clase .ws-link
+document.addEventListener('click', e => {
+  const wsLink = e.target.closest('.ws-link');
+  if (wsLink) {
+    e.preventDefault();
+    let text = '';
+    if (wsLink.hasAttribute('data-ws-text')) {
+      text = wsLink.getAttribute('data-ws-text');
+    } else {
+      const href = wsLink.getAttribute('href');
+      if (href && href.includes('text=')) {
+        try {
+          const urlObj = new URL(href);
+          text = urlObj.searchParams.get('text') || '';
+        } catch(err) {
+          const match = href.match(/[?&]text=([^&]+)/);
+          if (match) {
+            text = decodeURIComponent(match[1]);
+          }
+        }
+      }
+    }
+    abrirModalWhatsapp(text);
+  }
+});
