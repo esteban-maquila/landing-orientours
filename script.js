@@ -332,6 +332,21 @@ function cerrarModal(){
   fondo.classList.remove('abierto');
   document.body.style.overflow='';
 }
+
+function abrirModalImagen(src){
+  caja.innerHTML = `
+    <div class="modal-cab" style="background:var(--azul-prof)">
+      <button class="cerrar" onclick="cerrarModal()" aria-label="Cerrar">✕</button>
+      <h3>Opinión de Cliente</h3>
+      <div class="sub-modal">Orientours · Comentario real</div>
+    </div>
+    <div class="modal-cuerpo" style="display:flex; justify-content:center; align-items:center; background:#f4f7fa; padding:20px;">
+      <img src="${src}" alt="Opinión de Cliente" style="max-width:100%; max-height:70vh; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.15); object-fit:contain;">
+    </div>`;
+  fondo.classList.add('abierto');
+  document.body.style.overflow='hidden';
+  caja.scrollTop = 0;
+}
 fondo.addEventListener('click',e=>{ if(e.target===fondo) cerrarModal(); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') cerrarModal(); });
 
