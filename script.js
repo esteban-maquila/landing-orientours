@@ -82,7 +82,7 @@ const planes = {
     foto:"Eje cafetero/Principal eje cafetero.jpeg",
     plus:["Valle del Cócora","Termales Santa Rosa de Cabal","Parque del Café","Parque Panaca","🏊 Hospedaje con piscina"],
     incluye:[
-      "Transporte terrestre ida y regreso en bus de turismo desde Medellín y Oriente",
+      "Transporte terrestre ida y regreso en bus de turismo desde Medellín",
       "3 noches de hospedaje en Finca Hotel Campestre con piscina",
       "Alimentación: 3 desayunos y 3 cenas",
       "Entrada y pasaporte al Parque del Café",
@@ -97,7 +97,7 @@ const planes = {
       ["Acomodación Múltiple","$745.000"],
       ["Acomodación Doble","Consultar"]
     ],
-    nota:"Salida 4:30 a.m. desde Medellín y Oriente. No incluye gastos no especificados ni miradores privados en Cocora. Para viajes con niños consultar tarifas especiales.",
+    nota:"Salida 4:30 a.m. desde Medellín. No incluye gastos no especificados ni miradores privados en Cocora. Para viajes con niños consultar tarifas especiales.",
     ws:"Hola Orientours, quiero información del plan Eje Cafetero ☕",
     pdf:"pdf/Eje cafetero.pdf"
   },
